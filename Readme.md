@@ -144,11 +144,11 @@ lab1/
       <span class="tag">Linux</span>
     </div>
 
-    <!-- Project 2 — Claude Storage Server -->
+    <!-- Project 2 — Cloude Storage Server -->
     <div class="project-card">
-      <h3>🗄️ Claude Storage Server</h3>
+      <h3>🗄️ Cloude Storage Server</h3>
       <p>Designed and deployed a self-hosted storage backend server to support
-         Claude-related workflows, provisioned on Linux with containerised services
+         Cloude-related workflows, provisioned on Linux with containerised services
          managed via Docker.</p>
       <ul class="feature-list">
         <li>Provisioned on a Linux VM with custom networking rules</li>
