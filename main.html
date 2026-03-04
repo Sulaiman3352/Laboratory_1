@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ===================== META & PAGE SETUP ===================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sulayman Seid Ymam | Personal Website</title>
+
+  <!-- ===================== GOOGLE FONT (font-family property) ===================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ===================== EXTERNAL STYLESHEET (Task 5) ===================== -->
+  <!-- In a real project this would be: <link rel="stylesheet" href="style.css" /> -->
+
+  <style>
+    /* ===================== CSS RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6fb;   /* background-color property */
+      color: #2d2d2d;               /* color property */
+      line-height: 1.7;
+    }
+
+    /* ===================== NAVIGATION (Task 7) ===================== */
+    nav {
+      background-color: #1a1a2e;
+      padding: 16px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* <ul> navigation list */
+    nav ul { list-style: none; display: flex; gap: 32px; justify-content: center; }
+
+    /* <a> navigation links */
+    nav ul li a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: #7f5af0; }
+
+    /* ===================== LAYOUT — BLOCK CONTAINER (Task 6) ===================== */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===================== HEADER ===================== */
+    header { background-color: #1a1a2e; color: #ffffff; padding: 64px 24px 48px; text-align: center; }
+
+    /* Profile image — block element */
+    .profile-img {
+      width: 130px; height: 130px;
+      border-radius: 50%; object-fit: cover;
+      border: 4px solid #7f5af0;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto; margin-right: auto;
+    }
+
+    header h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 10px; }
+    header p  { font-size: 1.1rem; color: #b0b0c8; max-width: 500px; margin: 0 auto; }
+
+    /* ===================== SHARED SECTION STYLES ===================== */
+    section { padding: 56px 0; border-bottom: 1px solid #e2e8f0; }
+    section:last-of-type { border-bottom: none; }
+
+    section h2 {
+      font-size: 1.6rem; font-weight: 700;
+      color: #1a1a2e; margin-bottom: 24px;
+    }
+    /* Decorative accent using selector for specific element */
+    section h2::after {
+      content: ''; display: block;
+      width: 48px; height: 3px;
+      background-color: #7f5af0;
+      margin-top: 6px; border-radius: 2px;
+    }
+
+    /* ===================== ABOUT ME ===================== */
+    #about p { font-size: 1.05rem; color: #444; max-width: 680px; }
+
+    /* ===================== EDUCATION & SKILLS (Task 6 — flex layout) ===================== */
+    .two-col { display: flex; gap: 48px; flex-wrap: wrap; }
+    .two-col > div { flex: 1; min-width: 220px; }
+    .two-col h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; color: #1a1a2e; }
+
+    /* Styled <ul> + <li> list */
+    .styled-list { list-style: none; padding: 0; }
+    .styled-list li {
+      padding: 8px 0; border-bottom: 1px solid #e8eaf0;
+      font-size: 0.97rem; color: #444;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .styled-list li::before { content: '▸'; color: #7f5af0; font-size: 0.85rem; flex-shrink: 0; }
+
+    /* ===================== PROJECTS (Task 6 — block cards) ===================== */
+    .projects-grid { display: flex; gap: 24px; flex-wrap: wrap; }
+
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px; padding: 24px;
+      flex: 1; min-width: 220px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(127,90,240,0.12); }
+    .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: #1a1a2e; }
+    .project-card p  { font-size: 0.93rem; color: #555; margin-bottom: 14px; }
+
+    /* Inline tag element */
+    .tag {
+      display: inline-block;
+      background-color: #ede9fe; color: #5b21b6;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      margin: 2px 2px 0 0;
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer { background-color: #1a1a2e; color: #8888aa; text-align: center; padding: 28px 24px; font-size: 0.9rem; }
+    footer a { color: #7f5af0; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== NAVIGATION MENU (Task 7) ===================== -->
+  <!-- <ul> list of <a> links that navigate between page sections -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===================== HEADER — NAME & DESCRIPTION (Task 1) ===================== -->
+  <header>
+    <!-- Profile photo via <img> tag with src attribute (Task 1) -->
+    <img
+      class="profile-img"
+      src="./pic.jpg"
+      alt="Profile photo of Sulayman Seid Ymam"
+    />
+    <h1>Sulayman Seid Ymam</h1>
+    <p>Information Technology Student · DevOps Engineer · Tech Enthusiast</p>
+  </header>
+
+  <!-- ===================== MAIN CONTENT (Task 6 — block container) ===================== -->
+  <main class="container">
+
+    <!-- === ABOUT ME SECTION (Task 2) === -->
+    <!-- <section> tag with hobbies, interests, and goals paragraph -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm a <span class="highlight">3rd-year Information Technology</span> student at
+        <span class="highlight">Lobachevsky University</span>, but my real passion lies in
+        <span class="highlight">DevOps</span>. I love working close to the metal — setting up
+        Linux servers, writing automation scripts, containerising services, and making systems
+        talk to each other reliably. I believe great infrastructure should be invisible: fast,
+        stable, and self-healing. When I'm not tinkering with servers, I'm exploring new tools
+        in the open-source ecosystem.
+      </p>
+    </section>
+
+    <!-- === EDUCATION & SKILLS SECTION (Task 3) === -->
+    <!-- <ul> and <li> elements list education history and key skills -->
+    <section id="education">
+      <h2>Education &amp; Skills</h2>
+      <div class="two-col">
+
+        <!-- Education entries -->
+        <div>
+          <h3>Education</h3>
+          <ul class="styled-list">
+            <li>B.Sc. Information Technology — Lobachevsky University (2023–2027)</li>
+            <li>IT specialist  — Google (2021)</li>
+            <li>Network Security - Microsoft (2024)</li>
+          </ul>
+        </div>
+
+        <!-- Key skills list -->
+        <div>
+          <h3>Key Skills</h3>
+          <ul class="styled-list">
+            <li><span class="icon">🐧</span> Linux</li>
+            <li><span class="icon">🐚</span> Bash Scripting</li>
+            <li><span class="icon">🐍</span> Python Scripting</li>
+            <li><span class="icon">📦</span> Docker</li>
+            <li><span class="icon">🖥️</span> Virtualization</li>
+            <li><span class="icon">⚙️</span> Ansible</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === MY PROJECTS SECTION (Task 4) === -->
+    <!-- Project cards use lists and descriptions to introduce each project -->
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Project 1 — Web Scraper -->
+        <div class="project-card">
+          <div class="card-header">
+            <div class="card-icon">🕷️</div>
+            <div>
+              <h3>Python Web Scraper</h3>
+              <span class="card-sub">Automation · Data Collection</span>
+            </div>
+          </div>
+          <p>
+            A Python-based scraping tool that extracts structured data from target websites,
+            handles pagination, rate-limiting, and exports results to JSON or CSV for analysis.
+          </p>
+          <ul class="feature-list">
+            <li>Built with <code>requests</code> and <code>BeautifulSoup</code></li>
+            <li>Automatic retry logic and request throttling</li>
+            <li>Configurable via CLI arguments for different target sites</li>
+            <li>Exports to JSON / CSV with timestamped output files</li>
+          </ul>
+          <span class="tag">Python</span>
+          <span class="tag">BeautifulSoup</span>
+          <span class="tag">Bash</span>
+          <span class="tag">Linux</span>
+        </div>
+
+        <!-- Project 2 — Claude Storage Server -->
+        <div class="project-card">
+          <div class="card-header">
+            <div class="card-icon">🗄️</div>
+            <div>
+              <h3>Claude Storage Server</h3>
+              <span class="card-sub">Infrastructure · Self-hosted</span>
+            </div>
+          </div>
+          <p>
+            Designed and deployed a self-hosted storage backend server to support Claude-related
+            workflows, provisioned on Linux with containerised services managed via Docker.
+          </p>
+          <ul class="feature-list">
+            <li>Provisioned on a Linux VM with custom networking rules</li>
+            <li>Services containerised with Docker Compose</li>
+            <li>Automated setup and re-deployment using Ansible playbooks</li>
+            <li>Persistent volume management and backup scripting in Bash</li>
+          </ul>
+          <span class="tag">Docker</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Bash</span>
+          <span class="tag">Virtualization</span>
+        </div>
+
+        <!-- Project 3 — Multimedia Streaming Server -->
+        <div class="project-card">
+          <div class="card-header">
+            <div class="card-icon">📡</div>
+            <div>
+              <h3>Multimedia Streaming Server</h3>
+              <span class="card-sub">Infrastructure · Networking</span>
+            </div>
+          </div>
+          <p>
+            Built and configured a self-hosted multimedia streaming server on Linux,
+            enabling on-demand video and audio access across the local network and remotely
+            via a secure tunnel.
+          </p>
+          <ul class="feature-list">
+            <li>Deployed Jellyfin inside a Docker container</li>
+            <li>Configured reverse proxy and SSL with Nginx</li>
+            <li>Automated library scanning and metadata fetching</li>
+            <li>Remote access secured via WireGuard VPN tunnel</li>
+          </ul>
+          <span class="tag">Docker</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Linux</span>
+          <span class="tag">WireGuard</span>
+          <span class="tag">Ansible</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER / CONTACT ===================== -->
+  <footer id="contact">
+    <p>
+      &copy; 2026 Sulayman Seid Ymam &nbsp;|&nbsp;
+      <a href="mailto:Sulayman.johnson@email.com">sulaiman3352@email.com</a>
+      &nbsp;|&nbsp;
+      <a href="https://github.com/Sulaiman3352" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>
